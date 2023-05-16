@@ -4,7 +4,7 @@ import http from 'http';
 import express from 'express';
 
 //Crear una instancia de express
-const app = express({extended:true});
+const app = express({extended: true});
 
 //Middleware de proceso de datos del cliente
 app.use(express.urlencoded());
@@ -22,10 +22,8 @@ app.use('/about', (req, res)=>{
     `);
    });
    //GET /add-product
-app.use('/add-product',(req,res,next)=>{
+app.get('/add-product',(req,res,next)=>{
     console.log("📣Siriviendo el formulario")
-    if(req.method === "POST") return next();
-    
     //Sirviendo el formularop
     res.send(`
     <form action="/add-product" method="POST">
@@ -37,7 +35,7 @@ app.use('/add-product',(req,res,next)=>{
     </form>`);
 });
 //POST /add-product
-app.use('/add-product',(req,res)=>{
+app.post('/add-product',(req,res)=>{
     //Realizando extracción de los datos en la peticion
     for(const prop in req.body){
         console.log(`${prop}: ${req.body[prop]}`);
@@ -63,5 +61,4 @@ const ip    = "0.0.0.0";
 server.listen(port, ip,(err)=>{
     console.log("📣 Sirviendo en http://localhost:3000");
     console.log(`📣 Sirviendo en http://${process.env.IP}:${process.env.PORT}`);
-
 })

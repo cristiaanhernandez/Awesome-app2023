@@ -4,22 +4,46 @@ import http from 'http';
 import express from 'express';
 
 //Crear una instancia de express
-const app = express();
+const app = express({extended:true});
+
+//Middleware de proceso de datos del cliente
+app.use(express.urlencoded());
 //Registrar nuestro primer middleware
 app.use((req,res,next) =>{
     console.log("📣 Ejecuntando Middleware 1");
     //invocando al siguente middleware
     next();
 });
-app.use((req,res,next) =>{
-    console.log("⭐ Ejecuntando Middleware 2");
-    //invocando al siguente middleware
-    next();
+app.use('/about', (req, res)=>{
+    res.send(`
+    <h1 style="color: teal">About...</h1>
+    <p style="color: #555"> Esta pagina creada para aprender 
+    desarrollo web en Fullstack con JS</p>
+    `);
+   });
+   //GET /add-product
+app.use('/add-product',(req,res,next)=>{
+    console.log("📣Siriviendo el formulario")
+    if(req.method === "POST") return next();
+    
+    //Sirviendo el formularop
+    res.send(`
+    <form action="/add-product" method="POST">
+    <label for="title">Title</label>
+    <input id="title"type="text" name="title">
+    <label for="description">Descripcion</label>
+    <input id="description" type="text" name="description">
+    <button type="submit">Add Product</button>
+    </form>`);
 });
-app.use((req,res,next) =>{
-    console.log(`✨${req.method} - ${req.url}`);
-    //invocando al siguente middleware
-    next();
+//POST /add-product
+app.use('/add-product',(req,res)=>{
+    //Realizando extracción de los datos en la peticion
+    for(const prop in req.body){
+        console.log(`${prop}: ${req.body[prop]}`);
+    }
+    //Redirecciónamiento
+    res.redirect('/');
 });
 app.use((req,res,) =>{
     console.log("⭐ Respondiendo al cliente");

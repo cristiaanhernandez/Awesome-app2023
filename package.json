@@ -5,7 +5,8 @@
   "main": "app.js",
   "type": "module",
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "dev": "nodemon ./"
   },
   "repository": {
     "type": "git",
@@ -29,5 +30,8 @@
   "homepage": "https://github.com/Emm152/Awesome-app2023/readme.md",
   "dependencies": {
     "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
   }
 }

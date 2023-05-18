@@ -21,20 +21,10 @@ router.get('/add-product', (req, res, next) => {
   });
 
   // GET /add-product
-router.get('/add-product', (req, res, next) => {
-  // Si la petición es post pasamos el siguiente
-  // Middleware
-  if(req.method === "POST") return next();
-
-  // Servimos el formulario
-  console.log("📢 Sirviendo formulario...");
-  res.send(`
-  <form action="/add-product" method="POST">
-    <input type="text" name="title">
-    <button type="submit">Add product</button>
-  </form>
-  `);
-});
+  router.get('/add-product', (req, res)=>{
+    console.log("📢 Sirviendo la ruta '/'");
+    res.sendFile(path.resolve('views','add-product.html'));
+  });
 
 // POST /add-product
 router.post('/add-product', (req, res) => {

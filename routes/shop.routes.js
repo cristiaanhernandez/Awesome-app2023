@@ -7,9 +7,9 @@ import path from 'path';
 const router = Router();
 
 // GET /
-router.get('/', (req, res)=>{
+router.get('/', (req, res) => {
   console.log("📢 Sirviendo la ruta '/'");
-  res.sendFile(path.resolve('views','shop.html'));
+  res.sendFile(path.resolve('views', 'shop.html'));
 });
 // GET /about
 router.get('/about', (req, res) => {
@@ -20,5 +20,7 @@ router.get('/about', (req, res) => {
     <p>App for Fullstack Web Dev Course I!</p>
   `);
 });
-
+router.get((req, res) => {
+  res.status(httpStatus.NOT_FOUND).sendFile(path.resolve('views', '404.html'));
+});
 export default router;

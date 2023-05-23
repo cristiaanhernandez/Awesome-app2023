@@ -20,9 +20,7 @@ app.use(adminRouter);
 // Se agrega ruta shop
 app.use(shopRouter);
 //Registrando Middleware Para el error 404
-app.use((req, res) => {
-    res.status(httpStatus.NOT_FOUND).sendFile(path.resolve('views', '404.html'));
-});
+
 
 //Definir puertos
 const port = 3000;

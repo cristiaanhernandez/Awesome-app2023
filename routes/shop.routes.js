@@ -20,7 +20,5 @@ router.get('/about', (req, res) => {
     <p>App for Fullstack Web Dev Course I!</p>
   `);
 });
-router.get((req, res) => {
-  res.status(httpStatus.NOT_FOUND).sendFile(path.resolve('views', '404.html'));
-});
+
 export default router;

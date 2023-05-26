@@ -8,12 +8,17 @@ import path from 'path';
 import adminRouter from './routes/admin.routes.js';
 import shopRouter from './routes/shop.routes.js';
 
+//Importando Root_DIR
+import { ROOT_DIR } from './helpers/paths.js';
+
 //Crear una instancia de express
 const app = express();
 
-
-//Middleware de proceso de bosy-pasrser
+//Middleware de proceso de bosy-parser
 app.use(express.urlencoded({ extended: true }));
+
+//Se registra el Middleware para el servidor de archivos estaticos
+app.use(express.static(path.join(ROOT_DIR, 'public')));
 
 // Se agrega ruta de administrador
 app.use('/admin', adminRouter);

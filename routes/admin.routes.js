@@ -12,9 +12,8 @@ export const products = [];
 
 // GET /add-product
 router.get('/add-product', (req, res) => {
-  console.log("📢 Sirviendo la ruta '/'");
-  console.log(`ROOT_DIR: ${ROOT_DIR}`);
-  res.sendFile(path.join(ROOT_DIR, 'views', 'add-product.html'));
+  console.log("📢 Sirviendo formulario...");
+  res.render('add-product');
 });
 
 // POST /add-product

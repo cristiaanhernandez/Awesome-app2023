@@ -13,7 +13,10 @@ export const products = [];
 // GET /add-product
 router.get('/add-product', (req, res) => {
   console.log("📢 Sirviendo formulario...");
-  res.render('add-product');
+  res.render('add-product', {
+    addProduct: `active`, 
+    viewStyle: '/css/product.css',
+    docTitle:"Add Product"});
 });
 
 // POST /add-product

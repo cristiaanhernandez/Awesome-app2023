@@ -10,10 +10,13 @@ const router = Router();
 router.get(["/", "/home"], (_, res) => {
   console.log(`📔 Inventario de productos: ${JSON.stringify(products)}`);
   console.log("📒 Sirviendo recurso: 'shop.html'");
-  res.render('shop', {shop: 'active',
-    docTitle:"Tienda",
+  res.render('shop', {
+    shop: 'active',
+    docTitle: "Tienda",
     viewStyle: '/css/product.css',
-    products});
+    isProductsListEmpty: products.length === 0,
+    products
+  });
 });
 // GET /about
 router.get('/about', (req, res) => {

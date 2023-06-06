@@ -7,7 +7,8 @@ import { getProducts } from '../controllers/products.controller.js'
 const router = Router();
 
 // GET /
-router.get(["/", "/home"], getProducts);
+router.get('/', getProducts);
+
 // GET /about
 router.get('/about', (req, res) => {
   console.log("📢 Sirviendo la ruta '/about'");
